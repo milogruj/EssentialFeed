@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct FeedItem {
+public struct FeedItem: Equatable {
     let id: String
     let description: String?
     let location: String?
