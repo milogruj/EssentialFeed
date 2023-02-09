@@ -58,7 +58,7 @@ final class RemoteFeedLoaderTests: XCTestCase {
             var capturredErrors = [RemoteFeedLoader.Error]()
             sut.load { capturredErrors.append($0) }
 
-            client.complete(withStatusCode: code)
+            client.complete(withStatusCode: code, at: index)
             
             XCTAssertEqual(capturredErrors, [.invalidData])
         }
