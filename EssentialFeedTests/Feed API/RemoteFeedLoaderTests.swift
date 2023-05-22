@@ -52,7 +52,8 @@ final class RemoteFeedLoaderTests: XCTestCase {
         
         samples.enumerated().forEach { index, code in
             
-            expect(sut, toCompleteWithResult: failure(.invalidData), when: {            client.complete(withStatusCode: code, at: index)
+            expect(sut, toCompleteWithResult: failure(.invalidData), when: {
+                client.complete(withStatusCode: code, at: index)
             })
         }
     }
@@ -142,7 +143,8 @@ final class RemoteFeedLoaderTests: XCTestCase {
         }
     }
     
-    private func makeSUT(url: URL = URL(string: "https://a-url.com")!, file: StaticString = #filePath, line: UInt = #line) -> (sut: RemoteFeedLoader, client: HTTPClientSpy) {
+    private func makeSUT(url: URL = URL(string: "https://a-url.com")!, file: StaticString = #filePath, line: UInt = #line)
+    -> (sut: RemoteFeedLoader, client: HTTPClientSpy) {
         let client = HTTPClientSpy()
         let sut = RemoteFeedLoader(url: url, client: client)
         
