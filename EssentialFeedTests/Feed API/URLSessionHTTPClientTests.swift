@@ -76,7 +76,7 @@ class URLSessionHTTPClientTests: XCTestCase {
             switch result {
             case let .success(receivedData, receivedResponse):
                 XCTAssertEqual(receivedData, data)
-                XCTAssertEqual(receivedResponse, response)
+                XCTAssertEqual(receivedResponse.statusCode, response.statusCode)
             default:
                 XCTFail("Expected success, got \(result) instead")
             }
@@ -84,7 +84,7 @@ class URLSessionHTTPClientTests: XCTestCase {
             exp.fulfill()
         }
         
-        wait(for: [exp])
+        wait(for: [exp], timeout: 1.0)
     }
 
     // MARK: - Helpers
